@@ -46,10 +46,18 @@ public class Plateau {
                     System.out.print(" _ ");
                 } else {
                     Pion p = plateau.get(i).get(j).getPion();
-                    if (p.getCouleur()) {
-                        System.out.print(" 1 ");
-                    } else {
-                        System.out.print(" 0 ");
+                    if (p.getClass().getSimpleName().equals("Dame")){
+                        if (p.getCouleur()) {
+                            System.out.print(" I ");
+                        } else {
+                            System.out.print(" O ");
+                        }
+                    } else{
+                        if (p.getCouleur()) {
+                            System.out.print(" 1 ");
+                        } else {
+                            System.out.print(" 0 ");
+                        }
                     }
                 }
             }

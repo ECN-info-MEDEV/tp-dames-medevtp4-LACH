@@ -17,7 +17,7 @@ public class Main {
         plateau.affiche();
         Case c = null;
         while (c == null || c.getPion() == null || c.getPion().getCouleur() != b) {
-            System.out.println("Selectionnez la coordonnée d'une case possédant un pion de votre couleur (" + b + ")");
+            System.out.println("Sélectionnez la coordonnée d'une case possédant un pion de votre couleur (" + b + ")");
             String s = sc.nextLine();
             try {
                 c = plateau.getCase(s);
@@ -28,7 +28,7 @@ public class Main {
         System.out.println("[" + c.getX() + "," + c.getY() + "]");
         Case objectif = null;
         while (objectif == null || objectif.getPion() != null) {
-            System.out.println("Selectionnez la coordonnée de la case où vous souhaitez vous déplacer.");
+            System.out.println("Sélectionnez la coordonnée de la case où vous souhaitez vous déplacer.");
             String s = sc.nextLine();
             try {
                 objectif = plateau.getCase(s);
@@ -41,9 +41,10 @@ public class Main {
         if (bool) {
             System.out.println("Déplacement ok");
             tourDeJeu(!b);
+        } else {
+            System.out.println("Déplacement impossible, veuillez saisir un nouveau pion.");
+            tourDeJeu(b);
         }
-        System.out.println("non");
-        tourDeJeu(b);
     }
 
 }
