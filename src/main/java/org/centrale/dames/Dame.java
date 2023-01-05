@@ -24,7 +24,7 @@ public class Dame extends Pion{
      */
     public boolean deplace_possible(Case i, Case f, List<List<Case>> p) {
 
-        if (f.getPion() == null) {
+        if ((f.getPion() == null) && ((f.getX() + f.getY()) % 2 != 0)) {
             if (i.getX()+i.getY() == f.getX()+f.getY()) {
                 // Cas d'une diagonale /
                 if (i.getX()<=f.getX()) {
