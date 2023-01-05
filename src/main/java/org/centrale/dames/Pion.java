@@ -40,12 +40,14 @@ public class Pion {
         c.setPion(null);
     }
 
-    public void deplacer(Case i, Case f, Plateau pla) {
+    public boolean deplacer(Case i, Case f, Plateau pla) {
         System.out.println("fonction déplacer pion");
 
         int dx, dy;
         int mX, mY;
         Case m ;
+
+        boolean result = false; 
 
         if (f.getPion()==null){
             dx=f.getX()-i.getX();
@@ -53,6 +55,7 @@ public class Pion {
             if ((dx != 0 ) ){ 
                 if ((Math.abs(dx) + Math.abs(dy) == 2) || (dy > 0)){
                     this.deplacer(i, f);
+                    result = true ; 
                 }
                 if((Math.abs(dx)+ Math.abs(dy) == 4) || (dy != 0)){
                    mX = i.getX()+dx/2 ;
@@ -61,9 +64,12 @@ public class Pion {
                    if(m.getPion().getCouleur() != this.getCouleur()){
                     this.manger(m);
                     this.deplacer(i, f);
+                    result = true; 
                    }
                 }
             }
+
         }
+        return result; 
     }
 }
