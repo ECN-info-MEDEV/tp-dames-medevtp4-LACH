@@ -22,14 +22,14 @@ public class Plateau {
             for (int j = 0; j < nbRow; j++) {
                 if ((i + j) % 2 == 1) {
                     if (i < 4) {
-                        row.add(new Case(i, j, new Pion(true)));
+                        row.add(new Case(j, i, new Pion(true)));
                     } else if (i > 5) {
-                        row.add(new Case(i, j, new Pion(false)));
+                        row.add(new Case(j, i, new Pion(false)));
                     } else {
-                        row.add(new Case(i, j, null));
+                        row.add(new Case(j, i, null));
                     }
                 } else {
-                    row.add(new Case(i, j, null));
+                    row.add(new Case(j, i, null));
                 }
             }
             plateau.add(row);
@@ -57,6 +57,12 @@ public class Plateau {
         }
         System.out.println();
         System.out.println("     A  B  C  D  E  F  G  H  I  J");
+    }
+
+    public Case getCase(String s) {
+        int x = (int) s.charAt(0) - (int) 'A';
+        int y = (int) s.charAt(1) - (int) '0';
+        return plateau.get(y).get(x);
     }
 
     public int getNbCol() {
