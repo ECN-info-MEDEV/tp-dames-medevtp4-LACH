@@ -56,15 +56,23 @@ public class Pion {
 
         boolean result = false; 
 
+        int coul ;
+
+        if (this.getCouleur()){
+            coul = 1 ; 
+        } else {
+            coul = -1 ; 
+        }
+
         if (f.getPion()==null){
             dx=f.getX()-i.getX();
             dy=f.getY()-i.getY();
             if ((dx != 0 ) ){ 
-                if ((Math.abs(dx) + Math.abs(dy) == 2) || (dy > 0)){
+                if ((Math.abs(dx) + Math.abs(dy) == 2) && (coul*dy > 0)){
                     this.deplacer(i, f);
                     result = true ; 
                 }
-                if((Math.abs(dx)+ Math.abs(dy) == 4) || (dy != 0)){
+                if((Math.abs(dx)+ Math.abs(dy) == 4) && (dy != 0)){
                    mX = i.getX()+dx/2 ;
                    mY = i.getY()+dy/2 ;
                    m = pla.getPlateau().get(mY).get(mX);
