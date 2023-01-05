@@ -91,6 +91,7 @@ public class Dame extends Pion{
     public void deplacer(Case i, Case f, Plateau pla) {
 
         List<List<Case>> p = pla.getPlateau();
+        boolean clr = p.get(i.getX()).get(i.getY()).getPion().getCouleur();
 
         if (deplace_possible(i,f,p)) {
             if (i.getX()+i.getY() == f.getX()+f.getY()) {
@@ -116,6 +117,9 @@ public class Dame extends Pion{
                     }
                 }
             }
+            p.get(i.getX()).get(i.getY()).setPion(null);
+            p.get(i.getX()).get(i.getY()).setPion(new Pion(clr));
+            
         } else {
             System.out.println("Le déplacement n'est pas possible.");
             System.out.println(" ");
