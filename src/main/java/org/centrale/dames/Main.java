@@ -9,11 +9,11 @@ public class Main {
     public static void main(String[] args) {
         sc = new Scanner(System.in);
         plateau = new Plateau();
-        plateau.affiche();
         tourDeJeu(false);
     }
 
     public static void tourDeJeu(boolean b) {
+        plateau.affiche();
         Case c = null;
         while (c == null || c.getPion() == null || c.getPion().getCouleur() != b) {
             System.out.println("Selectionnez la coordonnée d'une case possédant un pion de votre couleur (" + b + ")");
@@ -36,6 +36,13 @@ public class Main {
             }
         }
         System.out.println("[" + objectif.getX() + "," + objectif.getY() + "]");
+        boolean bool = c.getPion().deplacer(c, objectif, plateau);
+        if (bool) {
+            System.out.println("Déplacement ok");
+            tourDeJeu(!b);
+        }
+        System.out.println("non");
+        tourDeJeu(b);
     }
 
 }
