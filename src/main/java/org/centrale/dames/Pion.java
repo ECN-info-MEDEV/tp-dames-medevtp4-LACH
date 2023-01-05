@@ -40,6 +40,13 @@ public class Pion {
         c.setPion(null);
     }
 
+    /**
+     * Déplace le pion d'une case donnée vers une autre case.
+     * @param i Case du pion qu'on cherche à déplacer.
+     * @param f Case où on cherche à déplacer le pion.
+     * @param pla Plateau sur lequel on évolue.
+     * @return Si le pion a été déplacé ou si son déplacement n'est pas possible.
+     */
     public boolean deplacer(Case i, Case f, Plateau pla) {
         System.out.println("fonction déplacer pion");
 

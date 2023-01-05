@@ -60,8 +60,8 @@ public class Plateau {
     }
 
     public Case getCase(String s) {
-        int x = (int) s.charAt(0) - (int) 'A';
-        int y = (int) s.charAt(1) - (int) '0';
+        int x = s.charAt(0) - 'A';
+        int y = s.charAt(1) - '0';
         return plateau.get(y).get(x);
     }
 
