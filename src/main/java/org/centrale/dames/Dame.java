@@ -82,13 +82,14 @@ public class Dame extends Pion{
     }
 
     /**
-     * Déplace le pion d'une case donnée vers une autre case.
-     * @param i Case du pion qu'on cherche à déplacer.
-     * @param f Case où on cherche à déplacer le pion.
-     * @param p Plateau sur lequel on évolue.
+     * Déplace la dame d'une case donnée vers une autre case.
+     * @param i Case de la dame qu'on cherche à déplacer.
+     * @param f Case où on cherche à déplacer la dame.
+     * @param pla Plateau sur lequel on évolue.
+     * @return Si la dame a été déplacée ou si son déplacement n'est pas possible.
      */
     @Override
-    public void deplacer(Case i, Case f, Plateau pla) {
+    public boolean deplacer(Case i, Case f, Plateau pla) {
 
         List<List<Case>> p = pla.getPlateau();
         boolean clr = p.get(i.getX()).get(i.getY()).getPion().getCouleur();
@@ -119,10 +120,12 @@ public class Dame extends Pion{
             }
             p.get(i.getX()).get(i.getY()).setPion(null);
             p.get(i.getX()).get(i.getY()).setPion(new Pion(clr));
+            return true;
             
         } else {
-            System.out.println("Le déplacement n'est pas possible.");
+            System.out.println("Le déplacement n'est pas possible, choississez une autre case.");
             System.out.println(" ");
+            return false;
         }
     }
 }
