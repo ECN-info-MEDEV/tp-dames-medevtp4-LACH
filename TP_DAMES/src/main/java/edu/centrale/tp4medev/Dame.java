@@ -1,6 +1,8 @@
 package edu.centrale.tp4medev;
 
-public class Dame {
+import java.util.List;
+
+public class Dame extends Pion{
     public Dame(){
         super();
     }
@@ -20,9 +22,7 @@ public class Dame {
      * @param p Plateau sur lequel on évolue.
      * @return Vrai si le déplacement est possible, faux sinon.
      */
-    public boolean deplace_possible(Case i, Case f, Plateau pla) {
-
-        List<List<Case>> p = pla.getPlateau();
+    public boolean deplace_possible(Case i, Case f, List<List<Case>> p) {
 
         if (f.getPion() == null) {
             if (i.getX()+i.getY() == f.getX()+f.getY()) {
@@ -67,6 +67,7 @@ public class Dame {
             }
             return true;
         }
+        return false;
     }
 
     /**

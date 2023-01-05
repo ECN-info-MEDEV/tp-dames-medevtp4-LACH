@@ -31,4 +31,12 @@ public class Pion {
         ca.setX(ca.getX()+dx);
         ca.setY(ca.getY()+dy);
     }
+
+    public void manger(Case c){
+        System.out.println("méthode manger");;
+    }
+
+    public void deplacer(Case i, Case f, Plateau pla) {
+        System.out.println("fonction déplacer pion");
+    }
 }
