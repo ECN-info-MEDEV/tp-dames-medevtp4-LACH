@@ -61,11 +61,13 @@ public class Pion {
                    mX = i.getX()+dx/2 ;
                    mY = i.getY()+dy/2 ;
                    m = pla.getPlateau().get(mY).get(mX);
-                   if(m.getPion().getCouleur() != this.getCouleur()){
-                    this.manger(m);
-                    this.deplacer(i, f);
-                    result = true; 
+                   if (m.getPion()!=null){
+                    if(m.getPion().getCouleur() != this.getCouleur()){
+                        this.manger(m);
+                        this.deplacer(i, f);
+                        result = true; 
                    }
+                   } 
                 }
             }
 
