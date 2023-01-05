@@ -35,7 +35,7 @@ public class Joueur {
             String sty = sc.nextLine();
             int y = Integer.parseInt(sty);
             // Vérification choix du pion
-            if(plateau.getPlateau().get(i).get(j).getPion().getCouleur()== couleur){
+            if(plateau.getPlateau().get(x).get(y).getPion().getCouleur()== couleur){
                 System.out.println("Le choix du pion est valide");
                 step1 = true;
             }
@@ -53,6 +53,7 @@ public class Joueur {
                 int ny = Integer.parseInt(nsty);
                 // ajouter la méthode déplacer
             }
+        }
 
     }
 
