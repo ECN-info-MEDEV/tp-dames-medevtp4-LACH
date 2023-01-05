@@ -10,6 +10,7 @@ public class Main {
         sc = new Scanner(System.in);
         plateau = new Plateau();
         tourDeJeu(false);
+        sc.close();
     }
 
     public static void tourDeJeu(boolean b) {
