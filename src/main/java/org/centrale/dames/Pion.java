@@ -56,12 +56,14 @@ public class Pion {
 
         boolean result = false; 
 
-        int coul ;
+        int coul, ligneF ; 
 
         if (this.getCouleur()){
             coul = 1 ; 
+            ligneF = 9 ;
         } else {
             coul = -1 ; 
+            ligneF = 0 ;
         }
 
         if (f.getPion()==null){
@@ -85,8 +87,17 @@ public class Pion {
                    } 
                 }
             }
-
+        }
+        if (result) {
+            if (f.getY()==ligneF){
+                Dame d = new Dame() ;
+                f.setPion(d);
+            }
         }
         return result; 
     }
 }
+
+
+
+
