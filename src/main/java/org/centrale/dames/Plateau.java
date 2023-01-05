@@ -12,14 +12,15 @@ public class Plateau {
         nbCol = 10;
         nbRow = 10;
         plateau = new LinkedList<>();
-        initPlateau(plateau);
+        initPlateau();
     }
 
-    private void initPlateau(List<List<Case>> plateau2) {
+    private void initPlateau() {
+        plateau = new LinkedList<>();
         for (int i = 0; i < nbCol; i++) {
             List<Case> row = new LinkedList<>();
             for (int j = 0; j < nbRow; j++) {
-                if (i + j % 2 == 1) {
+                if ((i + j) % 2 == 1) {
                     if (i < 5) {
                         row.add(new Case(i, j, new Pion(true)));
                     } else if (i > 6) {
@@ -31,28 +32,30 @@ public class Plateau {
                     row.add(new Case(i, j, null));
                 }
             }
+            plateau.add(row);
         }
     }
 
     public void affiche() {
         System.out.println("     A  B  C  D  E  F  G  H  I  J");
-        for (int i = 0; i<nbCol; i++) {
-            System.out.print(i + "  ");
-            for (int j = 0; j<nbRow; j++) {
+        System.out.println();
+        for (int i = 0; i < nbCol; i++) {
+            System.out.print(i + "   ");
+            for (int j = 0; j < nbRow; j++) {
                 if (plateau.get(i).get(j).getPion() == null) {
-                    System.out.print("  ");
+                    System.out.print(" _ ");
                 } else {
                     Pion p = plateau.get(i).get(j).getPion();
                     if (p.getCouleur()) {
                         System.out.print(" 1 ");
                     } else {
-                        System.out.println(" 0 ");
+                        System.out.print(" 0 ");
                     }
                 }
             }
-            System.out.println("  i");
-            System.out.println();
+            System.out.println("   " + i);
         }
+        System.out.println();
         System.out.println("     A  B  C  D  E  F  G  H  I  J");
     }
 
@@ -79,7 +82,5 @@ public class Plateau {
     public void setPlateau(List<List<Case>> plateau) {
         this.plateau = plateau;
     }
-
-
 
 }
