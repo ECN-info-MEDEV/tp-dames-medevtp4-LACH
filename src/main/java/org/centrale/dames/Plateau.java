@@ -21,9 +21,9 @@ public class Plateau {
             List<Case> row = new LinkedList<>();
             for (int j = 0; j < nbRow; j++) {
                 if ((i + j) % 2 == 1) {
-                    if (i < 5) {
+                    if (i < 4) {
                         row.add(new Case(i, j, new Pion(true)));
-                    } else if (i > 6) {
+                    } else if (i > 5) {
                         row.add(new Case(i, j, new Pion(false)));
                     } else {
                         row.add(new Case(i, j, null));
