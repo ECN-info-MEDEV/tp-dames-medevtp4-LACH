@@ -2,28 +2,50 @@
 <project name="testAnt" default="build" basedir=".">
     <description>Test de projet</description>
 
-    <target name="checkDependencies"
-            description="Check if dependencies are satisfied">
-            <property name="src.location" location="src"/>
-            <property nale="classes.location" location="build/classes"/>
+    <property name="src.location" location="src" />
+    <property name="classes.location" location="build/classes" />
+    <property name="jar.location" location="build/jar" />
+    <property name="build.location" location="build" />
+    <property name="doc.location" location="build/doc" />
+    <property name="test.location" location="${src.location}/test" />    
+    <property name="main.location" location="${src.location}/main" />
 
-            <echo message="Source directory is ${src.location}"/>
-            <echo message="Classes directory is ${classes.location}"/>
-        <condition property="src.available">
-            <and>
-                <available file="${src.location}" type="dir"/>
-                <available file="${classes.location}" type="dir"/>
-            </and>
-        </condition>
+    <property name="main-class" value="app.TestAnt" />
+
+    <target name="clean" description="Clear the build folder">
+        <delete dir="${build.location}" />
     </target>
 
-    <target name="build" description="Build the application"
-            depends="checkDependencies" if="src.available">
-        <echo message="Building applications..."/>
-
-        <javac srcdir="${src.location}" destdir="${classes.direction}"
-            includeAntRunTime="false"/>
-
-        <echo message="Done !"/>
+    <target name="compile" description="Compile the Application">
+        <echo message="Building application..." />
+        <mkdir dir="${classes.location}" />
+        <javac srcdir="${main.location}" destdir="${classes.location}" includeAntRuntime="false" />
+        <echo message="Done!" />
     </target>
+
+    <target name="jar" description="Build the jar" depends="compile" >
+        <mkdir dir="${jar.location}" />
+        <jar destfile="${jar.location}/${ant.project.name}.jar" basedir="${classes.location}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <java jar="${jar.location}/${ant.project.name}.jar" fork="true" />
+    </target>
+
+    <target name="javadoc">
+        <mkdir dir="${doc.location}" />
+        <javadoc sourcepath="${src.location}" destdir="${doc.location}">
+            <fileset dir="${src.location}" defaultexcludes="yes">
+                <include name="**" />
+            </fileset>
+        </javadoc>
+    </target>
+
+    <target name="clean-build" depends="clean,jar" />
+    <target name="main" depends="clean,run" />
+    
 </project>
